@@ -1,0 +1,14 @@
+.app-species-list {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.mat-card {
+  margin: 8px;
+
+  .mat-card-content {
+    max-height: 300px;
+    overflow: auto;
+  }
+
+}
