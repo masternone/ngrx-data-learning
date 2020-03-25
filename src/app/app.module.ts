@@ -6,8 +6,8 @@ import {AppComponent} from './app.component';
 import {MaterialModule} from './material/material.module';
 import {NGRXStoreModule} from './store/ngrx-store.module';
 import {HttpClientModule} from '@angular/common/http';
-import { StoreDevtoolsModule } from '@ngrx/store-devtools';
-import { environment } from '../environments/environment';
+import {StoreDevtoolsModule} from '@ngrx/store-devtools';
+import {environment} from '../environments/environment';
 
 @NgModule({
   declarations: [
@@ -19,7 +19,7 @@ import { environment } from '../environments/environment';
     HttpClientModule,
     MaterialModule,
     NGRXStoreModule,
-    StoreDevtoolsModule.instrument({ maxAge: 25, logOnly: environment.production })
+    StoreDevtoolsModule.instrument({maxAge: 25, logOnly: environment.production})
   ],
   providers: [],
   bootstrap: [AppComponent]

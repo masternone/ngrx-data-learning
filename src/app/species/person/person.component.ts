@@ -20,7 +20,7 @@ export class PersonComponent implements OnChanges, OnDestroy {
   constructor(private personCollection: PersonCollectionService) {}
 
   ngOnChanges(changes: SimpleChanges): void {
-    if (changes.personId.firstChange) {
+    if (changes?.personId?.firstChange) {
       if (this.people[this.personId] === undefined) {
         const extractedValue = /\/(\d*)\/$/.exec(this.personId)[1];
         this.personCollection.getByKey(extractedValue);

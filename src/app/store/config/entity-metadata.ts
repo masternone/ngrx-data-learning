@@ -3,8 +3,8 @@ import * as species from '../species';
 import * as person from '../person';
 
 const entityMetadata: EntityMetadataMap = {
-  [person.entityCollectionName]: {},
-  [species.entityCollectionName]: {}
+  [person.entityCollectionName]: {selectId: (p: person.Person) => p[person.entitySelectId]},
+  [species.entityCollectionName]: {selectId: (s: species.Species) => s[species.entitySelectId]}
 };
 
 const pluralNames = {

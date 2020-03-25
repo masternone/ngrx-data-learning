@@ -1,3 +1,4 @@
+export const entitySelectId = 'url';
 export const entityCollectionName = 'People';
 export const pluralizedEntityName = 'people';
 export const entityCollectionEndPoint = pluralizedEntityName;

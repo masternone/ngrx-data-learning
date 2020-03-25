@@ -4,10 +4,12 @@ import {dataServiceConfig, entityConfig, registeredEffects, storeConfig} from '.
 import {StoreModule} from '@ngrx/store';
 import {StoreDevtoolsModule} from '@ngrx/store-devtools';
 import {EffectsModule} from '@ngrx/effects';
-import {DefaultDataServiceConfig, EntityDataModule} from '@ngrx/data';
+import {DefaultDataServiceConfig, EntityDataModule, EntityDataService} from '@ngrx/data';
 import {SpeciesCollectionService} from './species/species-collection.service';
 import {environment} from '../../environments/environment';
 import {PersonCollectionService} from './person/person-collection.service';
+import * as species from './species';
+import {SpeciesCollectionDataService} from './species/species-collection-data.service';
 
 @NgModule({
   declarations: [],
@@ -24,7 +26,15 @@ import {PersonCollectionService} from './person/person-collection.service';
       useValue: dataServiceConfig
     },
     PersonCollectionService,
-    SpeciesCollectionService
+    SpeciesCollectionService,
+    SpeciesCollectionDataService
   ]
 })
-export class NGRXStoreModule {}
+export class NGRXStoreModule {
+  constructor(private entityDataService: EntityDataService, private speciesCollectionDataService: SpeciesCollectionDataService) {
+    entityDataService.registerService(
+      species.entityCollectionName,
+      speciesCollectionDataService
+    );
+  }
+}

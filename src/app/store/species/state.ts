@@ -1,3 +1,4 @@
+export const entitySelectId = 'url';
 export const entityCollectionName = 'Species';
 export const pluralizedEntityName = 'species';
 export const entityCollectionEndPoint = pluralizedEntityName;

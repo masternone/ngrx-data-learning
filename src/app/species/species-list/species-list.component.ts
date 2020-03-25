@@ -29,15 +29,10 @@ export class SpeciesListComponent implements OnDestroy {
   species: Dictionary<Species> = {};
 
   constructor(private spicesCollection: SpeciesCollectionService) {
-    /* This is required because I could not figure out where to put the custom reducer
-     calling get_all and looping over that would be better then calling in a loop
-     */
-    for (let i = 1; i <= 37; i++) {
-      spicesCollection.getByKey(i);
-    }
+    // this will call all next pages from the return value
+    spicesCollection.getWithQuery({page: `1`});
     this.subscriptions.push(
       spicesCollection.entities$.subscribe((spices: Array<Species>) => {
-        console.log(spices);
         spices.forEach(s => {
           this.species[s.url] = s;
         });
