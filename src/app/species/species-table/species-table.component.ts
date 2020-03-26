@@ -35,9 +35,6 @@ export class SpeciesTableComponent implements OnDestroy {
     // this will call all next pages from the return value
     speciesCollection.getWithQuery({ page: `1` });
 
-    this.dataSource.paginator = this.paginator;
-    this.dataSource.sort = this.sort;
-
     this.subscriptions.push(
       this.filterFormControl.valueChanges.subscribe(filter => {
         this.speciesCollection.setFilter(filter);
@@ -48,6 +45,8 @@ export class SpeciesTableComponent implements OnDestroy {
       this.speciesCollection.filteredEntities$.subscribe(
         filteredEntities => {
           this.dataSource = new MatTableDataSource<Species>(filteredEntities);
+          this.dataSource.paginator = this.paginator;
+          this.dataSource.sort = this.sort;
           // The filter function is set up in the entity-metadata function
         }
       )
