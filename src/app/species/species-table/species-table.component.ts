@@ -26,7 +26,9 @@ export class SpeciesTableComponent implements OnDestroy {
 
   displayedColumns = [
     'name',
-    'classification'
+    'classification',
+    'designation',
+    'average_lifespan'
   ];
 
   constructor(private speciesCollection: SpeciesCollectionService) {
