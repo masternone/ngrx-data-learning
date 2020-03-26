@@ -6,16 +6,14 @@ import { Subscription } from 'rxjs';
 import { MatTableDataSource } from '@angular/material/table';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
-import { MatInput } from '@angular/material/input';
 import { FormControl } from '@angular/forms';
-import { map } from 'rxjs/operators';
 
 @Component({
   selector: 'app-species-table',
   templateUrl: './species-table.component.html',
   styleUrls: ['./species-table.component.scss']
 })
-export class SpeciesTableComponent implements OnInit, OnDestroy {
+export class SpeciesTableComponent implements OnDestroy {
   subscriptions: Array<Subscription> = [];
   species: Dictionary<Species> = {};
   dataSource = new MatTableDataSource<Species>();
@@ -28,20 +26,7 @@ export class SpeciesTableComponent implements OnInit, OnDestroy {
 
   displayedColumns = [
     'name',
-    'classification',
-    // 'designation',
-    // 'average_height',
-    // 'skin_colors',
-    // 'hair_colors',
-    // 'eye_colors',
-    // 'average_lifespan',
-    // 'homeworld',
-    // 'language',
-    // 'people',
-    // 'films',
-    // 'created',
-    // 'edited',
-    // 'url'
+    'classification'
   ];
 
   constructor(private speciesCollection: SpeciesCollectionService) {
@@ -61,12 +46,11 @@ export class SpeciesTableComponent implements OnInit, OnDestroy {
       this.speciesCollection.filteredEntities$.subscribe(
         filteredEntities => {
           this.dataSource = new MatTableDataSource<Species>(filteredEntities);
+          // The filter function is set up in the entity-metadata function
         }
       )
     );
   }
-
-  ngOnInit(): void {}
 
   ngOnDestroy(): void {
     this.subscriptions.forEach(subscription => subscription.unsubscribe());

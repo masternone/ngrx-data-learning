@@ -2,6 +2,7 @@ import {EntityDataModuleConfig, EntityMetadataMap} from '@ngrx/data';
 import * as species from '../species';
 import * as person from '../person';
 
+// This creates the filter for ... filtering
 function nameFilter(entities: { name: string }[], search: string) {
   return entities.filter(e => -1 < e.name.indexOf(search));
 }
